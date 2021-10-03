@@ -1,0 +1,60 @@
+#capiturar a quantidade de saltos
+saltos = int(input('Quantos saltos haverá para cada atleta? '))
+
+#declarar as listas que serão utilizadas
+atletas = []
+notas = []
+medias = []
+conceito = ['ruim', 'bom', 'muito bom']
+aux = 0
+maior_media = 0
+
+
+#capiturar nome do atleta
+while True :
+    nome = (input('Nome do Atleta: (ou sair para parar)')).lower ()
+    if nome == 'sair':
+        break
+    else :
+        atletas.append(nome)
+    
+#capiturar todas as notas dos saltos dos atletas
+    for i in range(saltos) :
+        nota = input('Digite a nota do {}º salto do {}.(Ruim, Bom ou Muito Bom)'. format(i+1, atletas[aux])).lower () 
+        while nota not in conceito :
+            print('Nota fora das 3 opções.')
+            nota = input('Digite a nota do {}º salto do {}.(Ruim, Bom ou Muito Bom)'. format(i+1, atletas[aux])).lower ()
+
+#converter cada nota do atleta do ruim, bom e muito bom para pontos        
+        
+        if nota == 'ruim' :
+            nota = 0
+        elif nota == 'bom' :
+            nota = 3
+        else :
+            nota = 5
+        
+        notas.append(nota)
+        
+# guardar a média de cada lista de notas
+
+    medias.append((sum(notas)/len(notas)))
+    notas = []
+    
+# apresentar o atleta com a melhor média
+    if maior_media == medias[aux] :
+        indice_vencedor = -1
+    
+    elif maior_media < medias[aux] :
+        maior_media =  medias[aux]
+        indice_vencedor = aux
+        
+    aux = aux + 1
+
+if maior_media == -1 :
+    print('Houve um empate na disputa!')
+    
+else :
+    print('\nAtleta {} ganhou!\nFoi o destaque com a média de pontos {}.' . format(atletas[indice_vencedor], medias[indice_vencedor]))
+
+# print(medias, atletas)
