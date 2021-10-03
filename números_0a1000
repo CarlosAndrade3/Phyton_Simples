@@ -1,0 +1,5 @@
+1# Faça um script que imprima na tela todos os pares entre 0 e 1000. Quantos pares existem nesse intervalo?
+
+pares = [i for i in range(1001) if i%2==0]
+print('os numeros pares, entre 0 e 1000:\n{}' . format(pares))
+print('\nSão {} números pares no total' . format(len(pares)))
